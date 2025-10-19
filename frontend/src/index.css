@@ -1,0 +1,309 @@
+/* =========================
+   Volkswagen Parking Finder UI Styles
+   ========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --vw-blue: #004d9e;
+  --vw-light-blue: #4a90e2;
+  --success-green: #28a745;
+  --error-red: #dc3545;
+  --bg: #f7f9fb;
+  --panel: #ffffff;
+  --muted: #6c757d;
+  --border: #e6e9ee;
+  --shadow: 0 4px 18px rgba(16,24,40,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto;
+  background: linear-gradient(180deg, #f8fbff 0%, #edf3fa 100%);
+  color: #111827;
+}
+
+/* Layout */
+.app-shell {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 390px;
+  background: var(--panel);
+  padding: 22px 20px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.03);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 4px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--vw-blue);
+  letter-spacing: 0.3px;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Search bar */
+.search-container {
+  display: flex;
+  gap: 8px;
+  background: #f4f6f9;
+  padding: 6px 8px;
+  border-radius: 12px;
+  border: 1px solid #e1e5ee;
+  transition: all 0.2s ease;
+}
+
+.search-container:focus-within {
+  border-color: var(--vw-light-blue);
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.15);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 12px;
+  font-size: 15px;
+  outline: none;
+  color: #222;
+}
+
+.search-input::placeholder {
+  color: #9aa0a6;
+}
+
+.refresh-btn {
+  background: var(--vw-blue);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+  background: #003b7a;
+  transform: translateY(-1px);
+}
+
+/* List of parkings */
+.parking-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.parking-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafc 100%);
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: var(--shadow);
+}
+
+.parking-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.parking-card.selected {
+  border-left: 4px solid var(--vw-blue);
+  background: #eef5ff;
+}
+
+.parking-meta h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #0b1622;
+  font-weight: 600;
+}
+
+.parking-meta p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.parking-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 110px;
+  gap: 8px;
+}
+
+.distance {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Buttons and pills */
+.btn-book {
+  background: var(--vw-blue);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-book:hover:not(.disabled) {
+  background: #003b7a;
+}
+
+.btn-book.disabled {
+  background: #cfcfcf;
+  cursor: not-allowed;
+}
+
+.status-pill {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-success {
+  background: #e8f9ef;
+  color: var(--success-green);
+}
+
+.status-error {
+  background: #fff0f0;
+  color: var(--error-red);
+}
+
+.error-block {
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  background: #fff4f4;
+  color: var(--error-red);
+  border: 1px solid #f1b8b8;
+}
+
+/* Loading Spinner */
+.loading-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 0, 0, 0.07);
+  border-left-color: var(--vw-blue);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Map area */
+.map-area {
+  flex: 1;
+  position: relative;
+  border-left: 1px solid var(--border);
+}
+
+.map-actions {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1200;
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 10px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.map-actions button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.center-btn {
+  background: white;
+  color: #111;
+}
+
+.center-btn:hover {
+  background: #f2f2f2;
+}
+
+.refresh-map {
+  background: var(--vw-blue);
+  color: white;
+}
+
+.refresh-map:hover {
+  background: #003b7a;
+}
+
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+}
